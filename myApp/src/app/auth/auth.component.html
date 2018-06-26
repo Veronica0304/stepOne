@@ -1,25 +1,37 @@
+<span *ngIf="authType=='register';then register else login"></span>
+
+<ng-template #register>
+  <h1><u>REGISTER</u></h1>
+</ng-template>
+<ng-template #login>
+  <h1>LOGIN</h1>
+</ng-template>
 <div class="forms">
-<form [formGroup]="authForm" (ngSubmit)="authUser()">
-  <div>
-    <label>Username</label>
-    <input type="text" formControlName="username" />
-  </div>
-  <div>
-      <label>Phone</label>
-      <input type="text" formControlName="phone" />
-    </div>
-    <div>
-        <label>Email</label>
-        <input type="text" formControlName="email"/>
+  <form [formGroup]="authForm" (ngSubmit)="authUser()">
+    <div *ngIf='authType == "register"'>
+      <div>
+        <label>Username</label>
+        <input type="text" formControlName="username" />
       </div>
       <div>
-          <label>Password</label>
-          <input type="password" formControlName="password" />
-        </div>
-        <div>
-          <button type="submit">
-            Submit
-          </button>
-        </div>
-</form>
+        <label>Phone</label>
+        <input type="text" formControlName="phone" />
+      </div>
+    </div>
+    <div>
+      <div>
+        <label>Email</label>
+        <input type="text" formControlName="email" />
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password" formControlName="password" />
+      </div>
+      <div>
+        <button type="submit">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
